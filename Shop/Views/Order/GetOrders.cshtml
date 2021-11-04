@@ -1,0 +1,9 @@
+﻿<h1>Все заказы</h1>
+<div class="row mt-5 mb-2">
+	@{
+		foreach (Order order in Model.AllOrders)
+		{
+			@Html.Partial("AllOrders", order)
+		}
+	}
+</div>
