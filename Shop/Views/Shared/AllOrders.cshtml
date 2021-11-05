@@ -31,7 +31,7 @@
 	@{
 		foreach (var detail in Model.OrderDetails)
 		{
-			<img src="@detail.Car.Img" alt="@detail.Car.Name" />
+			<img src="data:image/jpeg;base64, @detail.Car.DataBase64" alt="@detail.Car.Name" />
 		}
 	}
 </div>

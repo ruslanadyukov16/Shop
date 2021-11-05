@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Shop.Data.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,7 +13,7 @@ namespace Shop.Data
 	{
 		public static void Initial(AppDbContext context)
 		{
-		
+			var projectDir = Environment.CurrentDirectory;
 
 			if (!context.Categories.Any())
 				context.Categories.AddRange(Categories.Select(c => c.Value));
@@ -30,8 +31,9 @@ namespace Shop.Data
 							Price = 35000,
 							IsFavourite = true,
 							Availiable = true,
-							Category = Categories["Электромобили"]
-						},
+							Category = Categories["Электромобили"],
+							Data = File.ReadAllBytes(projectDir + "/wwwroot/Img/Tesla.jpg")
+					},
 						new Car {
 							Name = "Ford fiesta",
 							ShortDesc = "Надежный автомобиль",
@@ -40,7 +42,8 @@ namespace Shop.Data
 							Price = 4500,
 							IsFavourite = false,
 							Availiable = true,
-							Category = Categories["Классические автомобили"]
+							Category = Categories["Классические автомобили"],
+							Data = File.ReadAllBytes(projectDir + "/wwwroot/Img/1559021799_1.jpg")
 						},
 						new Car {
 							Name = "Nissan Almera",
@@ -50,7 +53,8 @@ namespace Shop.Data
 							Price = 45000,
 							IsFavourite = true,
 							Availiable = true,
-							Category = Categories["Классические автомобили"]
+							Category = Categories["Классические автомобили"],
+							Data = File.ReadAllBytes(projectDir + "/wwwroot/Img/1559021804_2.jpg")
 						},
 						new Car {
 							Name = "Nissan GTR",
@@ -61,6 +65,7 @@ namespace Shop.Data
 							IsFavourite = true,
 							Availiable = true,
 							Category = Categories["Электромобили"],
+							Data = File.ReadAllBytes(projectDir + "/wwwroot/Img/unnamed.jpg")
 						}
 				});
 			}

@@ -15,6 +15,8 @@ namespace Shop.Data.Models
 		public ushort Price { get; set; }
 		public bool IsFavourite { get; set; }
 		public bool Availiable { get; set; }
+		public byte[] Data { get; set; }
+		public string DataBase64 { get => Convert.ToBase64String(Data);}
 		public int CategoryId { get; set; }
 		public virtual Category Category { get; set; }
 	}

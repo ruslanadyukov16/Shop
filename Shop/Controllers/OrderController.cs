@@ -58,8 +58,6 @@ namespace Shop.Controllers
 			{
 				AllOrders = _allOrders.GetOrders()
 			};
-			
-			
 			return View(orders);
 		}
 	}

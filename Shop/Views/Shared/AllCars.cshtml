@@ -1,7 +1,7 @@
 ﻿@model Shop.Data.Models.Car
 
 <div class="col-lg-4">
-	<img class="img-thumbnail" src="@Model.Img" alt="@Model.Name" />
+	<img class="img-thumbnail" src="data:image/jpeg;base64, @Model.DataBase64" alt="@Model.Name" />
 	<h2>Модель: @Model.Name</h2>
 	<p>@Model.ShortDesc</p>
 	<p>Цена: @Model.Price.ToString("c")</p>
