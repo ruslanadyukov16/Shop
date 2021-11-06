@@ -45,7 +45,7 @@ namespace FileUploadApp.Controllers
 						IsFavourite = view.Car.IsFavourite,
 						// TODO: Сделать вычисление на форме или default в БД
 						Availiable = true,
-						Category = DbObjects.DbCategory(_context)["Электромобили"]
+						Category = DbObjects.DbCategory(_context)[view.CategoryName]
 					};
 
 					_context.Add(car);
