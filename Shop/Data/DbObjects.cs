@@ -72,7 +72,28 @@ namespace Shop.Data
 			context.SaveChanges();
 		}
 
-		private static Dictionary<string, Category> _category;
+		public static Dictionary<string, Category> DbCategory (AppDbContext context)
+		{
+			foreach (var category in context.Categories)
+			{
+				_category[category.CategoryName] = context.Categories.Where(item => item.CategoryName == category.CategoryName).FirstOrDefault();
+			}
+
+			return _category;
+		}
+
+		public static List<string> AllCategory(AppDbContext context)
+		{
+			var list = new List<string>();
+			foreach (var category in context.Categories)
+			{
+				list.Add(category.CategoryName);
+			}
+
+			return list;
+		}
+
+		private static Dictionary<string, Category> _category = new Dictionary<string, Category>();
 
 		public static Dictionary<string, Category> Categories
 		{
@@ -85,12 +106,12 @@ namespace Shop.Data
 						new Category {CategoryName = "Электромобили", Description = "Современный"},
 						new Category {CategoryName = "Классические автомобили", Description = "Классика"}
 					};
-				_category = new Dictionary<string, Category>();
+
+					_category = new Dictionary<string, Category>();
 
 					foreach (Category el in list)
 						_category.Add(el.CategoryName, el);
 				}
-
 				return _category;
 			}
 		}
