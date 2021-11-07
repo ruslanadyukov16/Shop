@@ -23,7 +23,7 @@ namespace FileUploadApp.Controllers
 
 		public IActionResult Index()
 		{
-			return View(_context.Cars.ToList());
+			return View(_context.Cars.FirstOrDefault());
 		}
 
 		[HttpPost]
